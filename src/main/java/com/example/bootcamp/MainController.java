@@ -8,7 +8,31 @@ import java.util.Scanner;
 @RestController
 public class MainController {
     public static void main(String[] args) {
+        Scanner teclado = new Scanner(System.in);
+
         buscarPersona();
+        Persona persona = new Persona("Nicolas",2,"01-01-2000", "abc-123");
+        System.out.println(persona.getDni());
+        String presentacion = persona.mostrarDatos(persona.getNombre(), persona.getFechaNacimiento(), persona.getEdad(),persona.getDni());
+        System.out.println(presentacion);
+
+        String mayor = persona.esMayorDeEdad(persona.getNombre(),persona.getEdad());
+        System.out.println(mayor);
+
+        Cuenta cuenta = new Cuenta("Nicolas", 100.00);
+        String cuenta1 = cuenta.mostrar(cuenta.getTitular(), cuenta.getCantidad());
+        System.out.println(cuenta1);
+
+        System.out.println("Ingrese la cantidad de dinero que quiere sacar:");
+        int dineroIngresado = teclado.nextInt();
+        String ingreso = cuenta.ingresar(dineroIngresado);
+        System.out.println(ingreso);
+        System.out.println(cuenta.getCantidad());
+
+        System.out.println("Ingrese la cantidad de dinero que quiere sacar:");
+        int dineroRetirado = teclado.nextInt();
+        String retiro = cuenta.retirar(dineroRetirado);
+        System.out.println(retiro);
     }
 
 
@@ -27,7 +51,6 @@ public class MainController {
         String nuevoPassword = firstNumAleatorio + password + secondNumAleatorio;
         return nuevoPassword;
     }
-
 
     private static void buscarPersona(){
         Scanner teclado = new Scanner(System.in);
